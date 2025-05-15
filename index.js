@@ -103,7 +103,7 @@ app.get('/api/users', (req, res) => {
   db.query(query, (err, results) => {
     if (err) {
       console.error('Error executing query:', err);
-      return res.status(500).json({ error: 'Database error' });
+      return res.status(500).json({ error: 'Database error ',err });
     }
 
     res.json(results);
@@ -140,7 +140,7 @@ app.post('/api/users', (req, res) => {
   db.query(query, [name, email], (err, result) => {
     if (err) {
       console.error('Error executing query:', err);
-      return res.status(500).json({ error: 'Database error' });
+      return res.status(500).json({ error: 'Database error ',err });
     }
 
     res.status(201).json({ id: result.insertId, name, email });
